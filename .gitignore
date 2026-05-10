@@ -12,3 +12,11 @@ __pycache__/
 *.egg-info/
 .venv/
 build/
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db
+
+# Beads issue tracker (local only)
+.beads/
+AGENTS.md
