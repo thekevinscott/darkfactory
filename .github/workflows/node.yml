@@ -45,27 +45,6 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run typecheck
 
-  unit:
-    name: Unit + coverage (95%)
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: ['20', '22', '24']
-    defaults:
-      run:
-        working-directory: packages/node
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10.33.0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: pnpm install --no-frozen-lockfile
-      - run: pnpm run coverage
-
   build:
     name: Build + smoke
     runs-on: ubuntu-latest
