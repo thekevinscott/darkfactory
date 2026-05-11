@@ -8,8 +8,6 @@ on:
 jobs:
   release:
     uses: thekevinscott/putitoutthere/.github/workflows/release.yml@v0
-    with:
-      environment: pypi
     permissions:
       contents: write
       id-token: write
@@ -29,7 +27,7 @@ jobs:
     needs: release
     if: needs.release.outputs.has_pypi == 'true'
     runs-on: ubuntu-latest
-    environment: pypi
+    environment: release
     permissions:
       id-token: write
     steps:
