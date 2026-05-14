@@ -1,11 +1,11 @@
 ---
 name: try-pr
-description: Check out a GitHub PR locally, build the rust CLI in packages/rust, and run the resulting binary in one step. Use when the user wants to try, test, or run a PR's version of the darkfactory CLI. Invoke as `/try-pr <PR#> [-- <cli args>...]`.
+description: Check out a GitHub PR locally, build the rust CLI in packages/rust, and print the command to run the resulting binary in one step. Use when the user wants to try, test, or run a PR's version of the darkfactory CLI. Invoke as `/try-pr <PR#> [-- <cli args>...]`.
 ---
 
 # try-pr
 
-Fetch a PR branch, build the rust CLI, and run it — in one shot.
+Fetch a PR branch, build the rust CLI, and print out how to run it — in one shot.
 
 ## Usage
 
@@ -14,11 +14,7 @@ Fetch a PR branch, build the rust CLI, and run it — in one shot.
 ```
 
 Examples:
-- `/try-pr 42` — checkout PR 42, build, run with no args
-- `/try-pr 42 -- --help` — pass `--help` through to the built CLI
-- `/try-pr 42 -- --version`
-
-Everything after `--` is forwarded to the `darkfactory` binary. If no `--` is present, run the binary with no extra args.
+- `/try-pr 42` — checkout PR 42, build, print out how to run with no args
 
 ## Workflow
 
@@ -66,17 +62,13 @@ cargo build --manifest-path packages/rust/Cargo.toml --release
 
 If the build fails, show the cargo error output to the user and stop — do not try to "fix" the PR's code.
 
-### 5. Run the binary
+### 5. Print out how to run the binary & remind the user how to get back
 
 ```bash
-./packages/rust/target/release/darkfactory <CLI_ARGS>
+echo './packages/rust/target/release/darkfactory'
 ```
 
-Show stdout, stderr, and the exit code. A non-zero exit code from the CLI is not a skill failure — just report it.
-
-### 6. Remind the user how to get back
-
-End your turn with a short note telling the user:
+Also include:
 - which branch they're now on (`pr-<PR#>`)
 - how to return to their previous branch (`git checkout -` or the branch name you recorded in step 2)
 - if a stash was created, how to restore it (`git stash pop`)
@@ -85,4 +77,3 @@ End your turn with a short note telling the user:
 
 - This skill is read-only with respect to the PR: it never pushes, comments, or modifies the PR.
 - Use `--release` so repeated runs are fast after the first build; cargo caches incremental artifacts.
-- Don't substitute `cargo run` — building then executing the binary is what the user asked for and keeps the run step separable from compile errors.
