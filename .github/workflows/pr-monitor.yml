@@ -3,6 +3,11 @@ name: PR Monitor
 on:
   pull_request:
 
+concurrency:
+  # A superseded gate run polls a stale SHA until it finishes. Cancel it.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   actions: read
   contents: read
