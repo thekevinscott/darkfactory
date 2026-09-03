@@ -17,7 +17,7 @@ name: Bootstrap npm packages (one-shot)
 #   5. Re-trigger Release; the engine publishes real versions over the
 #      bootstrap stubs via OIDC.
 #
-# This file can be removed once all darkfactory-cli + @dark-factory/*
+# This file can be removed once all twilightfactory-cli + @twilight-factory/*
 # npm names exist on the registry — its only job is the first-publish
 # bootstrap.
 
@@ -56,7 +56,7 @@ jobs:
             "license": "MIT",
             "repository": {
               "type": "git",
-              "url": "git+https://github.com/thekevinscott/darkfactory.git"
+              "url": "git+https://github.com/thekevinscott/twilightfactory.git"
             }
           }
           EOF

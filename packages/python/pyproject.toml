@@ -3,16 +3,16 @@ requires = ["maturin>=1.7,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "darkfactory"
+name = "twilightfactory"
 version = "0.0.1"
-description = "CLI for the dark factory pattern: non-interactive agents converge specs into code without human review."
+description = "CLI for the twilight factory pattern: non-interactive agents converge specs into code without human review."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Kevin Scott", email = "me@thekevinscott.com" }]
 
 [project.urls]
-Repository = "https://github.com/thekevinscott/darkfactory"
+Repository = "https://github.com/thekevinscott/twilightfactory"
 
 [tool.maturin]
 manifest-path = "../rust/Cargo.toml"

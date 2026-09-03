@@ -6,9 +6,9 @@ version = 1
 # Cascade: edits under packages/rust/** retrigger PyPI + npm builds.
 
 [[package]]
-name = "darkfactory-rust"
+name = "twilightfactory-rust"
 kind = "crates"
-crate = "darkfactory-cli"
+crate = "twilightfactory-cli"
 path = "packages/rust"
 first_version = "0.0.1"
 globs = [
@@ -17,13 +17,13 @@ globs = [
 ]
 
 [[package]]
-name = "darkfactory-py"
+name = "twilightfactory-py"
 kind = "pypi"
-pypi = "darkfactory"
+pypi = "twilightfactory"
 path = "packages/python"
 first_version = "0.0.1"
 build = "maturin"
-depends_on = ["darkfactory-rust"]
+depends_on = ["twilightfactory-rust"]
 globs = [
   "packages/python/**",
   "packages/rust/**",
@@ -38,13 +38,13 @@ targets = [
 ]
 
 [[package]]
-name = "darkfactory-npm"
+name = "twilightfactory-npm"
 kind = "npm"
-npm = "darkfactory-cli"
+npm = "twilightfactory-cli"
 path = "packages/node"
 first_version = "0.0.1"
-build = [{ mode = "bundled-cli", name = "@dark-factory/{triple}" }]
-depends_on = ["darkfactory-rust"]
+build = [{ mode = "bundled-cli", name = "@twilight-factory/{triple}" }]
+depends_on = ["twilightfactory-rust"]
 globs = [
   "packages/node/**",
   "packages/rust/**",
