@@ -2,7 +2,7 @@
 // Dual-mode build:
 //   TARGET unset / "main" / "noarch" -> tsc (the publishable JS shim).
 //   TARGET = <rust-triple>           -> cargo cross-compile + stage at
-//                                       build/<triple>/bin/darkfactory{,.exe}.
+//                                       build/<triple>/bin/twilightfactory{,.exe}.
 //
 // Invoked by the putitoutthere reusable workflow at release time. Per-triple
 // rows run on native runners (x86_64-linux on ubuntu-latest, aarch64-linux on
@@ -30,10 +30,10 @@ if (target === '' || target === 'main' || target === 'noarch') {
 }
 
 const ext = target.includes('windows') ? '.exe' : '';
-const bin = `darkfactory${ext}`;
+const bin = `twilightfactory${ext}`;
 
 run('rustup', ['target', 'add', target], { cwd: rustCrate });
-run('cargo', ['build', '--release', '--target', target, '--bin', 'darkfactory'], { cwd: rustCrate });
+run('cargo', ['build', '--release', '--target', target, '--bin', 'twilightfactory'], { cwd: rustCrate });
 
 const src = join(rustCrate, 'target', target, 'release', bin);
 const dstDir = join(nodePkg, 'build', target, 'bin');

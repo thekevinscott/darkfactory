@@ -1,5 +1,5 @@
-# darkfactory-cli (Node)
+# twilightfactory-cli (Node)
 
 ```
-npm install darkfactory-cli
+npm install twilightfactory-cli
 ```

@@ -2,9 +2,9 @@ use clap::Parser;
 
 #[derive(Parser, Debug)]
 #[command(
-    name = "darkfactory",
+    name = "twilightfactory",
     version,
-    about = "CLI for the dark factory pattern: non-interactive agents converge specs into code without human review.",
+    about = "CLI for the twilight factory pattern: non-interactive agents converge specs into code without human review.",
     long_about = None,
 )]
 pub struct Cli {}
@@ -24,17 +24,17 @@ mod tests {
 
     #[test]
     fn no_args_returns_ok_zero() {
-        assert_eq!(run(["darkfactory"]).unwrap(), 0);
+        assert_eq!(run(["twilightfactory"]).unwrap(), 0);
     }
 
     #[test]
     fn unknown_flag_errors() {
-        assert!(run(["darkfactory", "--bogus"]).is_err());
+        assert!(run(["twilightfactory", "--bogus"]).is_err());
     }
 
     #[test]
     fn help_flag_returns_clap_display_help() {
-        let err = run(["darkfactory", "--help"]).expect_err("--help should bubble");
+        let err = run(["twilightfactory", "--help"]).expect_err("--help should bubble");
         let clap_err = err
             .downcast_ref::<clap::Error>()
             .expect("error should be a clap::Error");
@@ -43,7 +43,7 @@ mod tests {
 
     #[test]
     fn version_flag_returns_clap_display_version() {
-        let err = run(["darkfactory", "--version"]).expect_err("--version should bubble");
+        let err = run(["twilightfactory", "--version"]).expect_err("--version should bubble");
         let clap_err = err
             .downcast_ref::<clap::Error>()
             .expect("error should be a clap::Error");

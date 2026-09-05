@@ -70,10 +70,10 @@ jobs:
         working-directory: packages/node
       - name: Stage rust binary as platform optional dep
         run: |
-          pkg=@dark-factory/x86_64-unknown-linux-gnu
+          pkg=@twilight-factory/x86_64-unknown-linux-gnu
           target=packages/node/node_modules/$pkg
           mkdir -p "$target/bin"
           printf '{"name":"%s","version":"0.0.1"}\n' "$pkg" > "$target/package.json"
-          install -m 755 packages/rust/target/release/darkfactory "$target/bin/darkfactory"
+          install -m 755 packages/rust/target/release/twilightfactory "$target/bin/twilightfactory"
       - name: Smoke (--version via node wrapper -> rust binary)
         run: node packages/node/dist/bin.js --version

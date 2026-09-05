@@ -58,4 +58,4 @@ jobs:
           workspaces: packages/rust
       - run: cargo build --release
       - name: Smoke (--version)
-        run: ./target/release/darkfactory --version
+        run: ./target/release/twilightfactory --version
